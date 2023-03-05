@@ -1,5 +1,8 @@
 {
-  "name": "simple-react-component-library",
+  "name": "@aprendaagora/simple-react-component-library",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/aprendaagora"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
