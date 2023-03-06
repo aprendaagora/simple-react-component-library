@@ -2,12 +2,22 @@ import React from "react";
 import "../../../output.css";
 
 export interface ButtonProps {
-  label: string;
+  text: string | JSX.Element;
   tailwind?: string;
   type?: "primary" | "success" | "danger" | "secondary" | "light" | "dark";
+  noBgColor?: boolean;
+  textColor?: string;
+  onClick?: any;
 }
 
-const Button = ({ label, tailwind = "", type = "primary" }: ButtonProps) => {
+const Button = ({
+  text,
+  tailwind = "",
+  type = "primary",
+  noBgColor = false,
+  textColor = "",
+  onClick,
+}: ButtonProps) => {
   const bgColor = {
     primary: "blue",
     success: "green",
@@ -18,16 +28,18 @@ const Button = ({ label, tailwind = "", type = "primary" }: ButtonProps) => {
   };
   return (
     <button
+      onClick={onClick}
       style={{
-        backgroundColor: bgColor[type],
-        color: type === "light" ? "black" : "white",
+        backgroundColor: noBgColor ? "transparent" : bgColor[type],
+        color: textColor ? textColor : type === "light" ? "black" : "white",
         fontWeight: "bold",
         borderRadius: "5px",
         padding: "3px",
+        display: "flex",
       }}
       className={tailwind}
     >
-      {label}
+      {text}
     </button>
   );
 };
