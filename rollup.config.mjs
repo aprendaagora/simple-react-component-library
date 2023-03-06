@@ -33,6 +33,7 @@ export default [
       postcss(), 
       terser(),
     ],
+    external: ['react-dom'],
   },
   {
     input: "dist/esm/types/index.d.ts",
