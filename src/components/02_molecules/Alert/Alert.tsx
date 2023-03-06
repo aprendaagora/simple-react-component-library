@@ -62,8 +62,8 @@ const Alert = ({ text, type = "primary", closeButton = false }: AlertProps) => {
 
   return (
     <div
+      className="rounded border p-4 justify-between"
       style={{ display: hide ? "none" : "flex", ...styles[type] }}
-      className="rounded border p-4 flex justify-between"
     >
       <span>{text}</span>{" "}
       {closeButton && (
