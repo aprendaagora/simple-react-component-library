@@ -89,8 +89,8 @@ const Table = ({
     <div>
       {Array.isArray(data[0]) ? (
         <>
-          <div className="border pt-4 px-4">
-            <div className="bg-slate-200 flex justify-start p-2">
+          <div className={`border pt-4 px-4 ${tailwind}`}>
+            <header className="bg-slate-200 flex justify-start p-2">
               <span className="mr-1">Search by </span>
               <select onChange={changeFilterColumn}>
                 {headers?.map((header) => (
@@ -104,12 +104,9 @@ const Table = ({
                 className="border flex-1 ml-1"
                 type=""
               />
-            </div>
+            </header>
 
-            <table
-              style={{ tableLayout: "fixed" }}
-              className={`border w-full ${tailwind}`}
-            >
+            <table style={{ tableLayout: "fixed" }} className="border w-full">
               {headers && (
                 <thead className="bg-gray-100">
                   <tr>
@@ -150,7 +147,7 @@ const Table = ({
                 </thead>
               )}
 
-              <tbody>
+              <tbody className="bg-white">
                 {page.map((row: any[], i: number) => (
                   <tr key={i}>
                     {row.map((cel, j: number) => (
@@ -162,7 +159,8 @@ const Table = ({
                 ))}
               </tbody>
             </table>
-            <div className="flex justify-center py-2">
+
+            <footer className="flex justify-center py-2">
               {pagesArray.map((number) => (
                 <span
                   className={`px-2 text-blue-500 cursor-pointer hover:underline ${
@@ -175,7 +173,7 @@ const Table = ({
                   {number + 1}
                 </span>
               ))}
-            </div>
+            </footer>
           </div>
         </>
       ) : (

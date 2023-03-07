@@ -36,6 +36,7 @@ const Button = ({
         borderRadius: "5px",
         padding: "3px",
         display: "flex",
+        width: "fit-content",
       }}
       className={tailwind}
     >
