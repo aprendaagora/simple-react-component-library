@@ -7,16 +7,16 @@ export interface TableProps {
   nItemsPerPage?: number;
   headers?: any[];
   orderingHeaders?: any[];
-  tailwind?: string;
+  className?: string;
 }
 
-const Table = ({
+const Table: React.FC<TableProps> = ({
   data,
   headers,
   orderingHeaders,
   nItemsPerPage = 5,
-  tailwind,
-}: TableProps) => {
+  className,
+}) => {
   const [sortingHeader, setSortingHeader] = useState("");
   const [sortingIndex, setSortingIndex] = useState<null | number>(null);
   const [ascending, setAscending] = useState(true);
@@ -89,7 +89,7 @@ const Table = ({
     <div>
       {Array.isArray(data[0]) ? (
         <>
-          <div className={`border pt-4 px-4 ${tailwind}`}>
+          <div className={`border pt-4 px-4 ${className}`}>
             <header className="bg-slate-200 flex justify-start p-2">
               <span className="mr-1">Search by </span>
               <select onChange={changeFilterColumn}>

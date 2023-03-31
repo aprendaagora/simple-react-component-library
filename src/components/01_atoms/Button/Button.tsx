@@ -2,43 +2,62 @@ import React from "react";
 import "../../../output.css";
 
 export interface ButtonProps {
-  text: string | JSX.Element;
-  tailwind?: string;
-  type?: "primary" | "success" | "danger" | "secondary" | "light" | "dark";
+  text: string | React.ReactNode;
+  className?: string;
+  type?:
+    | "primary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "secondary"
+    | "light"
+    | "dark";
   noBgColor?: boolean;
   textColor?: string;
+  disabled?: boolean;
   onClick?: any;
 }
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   text,
-  tailwind = "",
-  type = "primary",
+  className,
+  type,
+  disabled = false,
   noBgColor = false,
   textColor = "",
   onClick,
-}: ButtonProps) => {
+}) => {
   const bgColor = {
-    primary: "blue",
-    success: "green",
-    danger: "red",
+    primary: "#0d6efd",
+    success: "#198754",
+    danger: "#dc3545",
+    warning: "#ffc107",
     secondary: "gray",
     light: "whitesmoke",
     dark: "black",
   };
+
+  const buttonStyle = {
+    backgroundColor: noBgColor
+      ? "transparent"
+      : disabled
+      ? "bg-gray"
+      : type
+      ? bgColor[type!]
+      : "",
+    color: textColor ? textColor : type === "light" ? "black" : "white",
+    display: "flex",
+    alignItems: "center",
+    width: "fit-content",
+    height: "fit-content",
+  };
+
   return (
     <button
       onClick={onClick}
-      style={{
-        backgroundColor: noBgColor ? "transparent" : bgColor[type],
-        color: textColor ? textColor : type === "light" ? "black" : "white",
-        fontWeight: "bold",
-        borderRadius: "5px",
-        padding: "3px",
-        display: "flex",
-        width: "fit-content",
-      }}
-      className={tailwind}
+      disabled={disabled}
+      style={buttonStyle}
+      className={`${className}`}
     >
       {text}
     </button>

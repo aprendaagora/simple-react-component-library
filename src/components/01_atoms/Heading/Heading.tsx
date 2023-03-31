@@ -4,15 +4,20 @@ export interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   text: string;
   color?: string;
-  tailwind?: string;
+  className?: string;
 }
 
-const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
+const Heading: React.FC<HeadingProps> = ({
+  text,
+  color,
+  className,
+  level = 1,
+}) => {
   if (level === 1)
     return (
       <h1
         style={{ fontSize: "2.75em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h1>
@@ -21,7 +26,7 @@ const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
     return (
       <h2
         style={{ fontSize: "2.5em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h2>
@@ -30,7 +35,7 @@ const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
     return (
       <h3
         style={{ fontSize: "2.25em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h3>
@@ -39,7 +44,7 @@ const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
     return (
       <h4
         style={{ fontSize: "2em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h4>
@@ -48,7 +53,7 @@ const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
     return (
       <h5
         style={{ fontSize: "1.75em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h5>
@@ -57,7 +62,7 @@ const Heading = ({ text, color, tailwind, level = 1 }: HeadingProps) => {
     return (
       <h6
         style={{ fontSize: "1.5em", color: color ? color : "black" }}
-        className={tailwind}
+        className={className}
       >
         {text}
       </h6>

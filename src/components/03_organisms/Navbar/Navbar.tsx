@@ -8,17 +8,17 @@ export interface NavbarProps {
     text: string;
   }[];
   renderItem?: (item: any) => React.ReactNode;
-  tailwind?: string;
+  className?: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   Logo,
   routes,
   renderItem = (item) => <span>{item}</span>,
-  tailwind,
+  className,
 }) => {
   return (
-    <div className={`flex items-center p-3 bg-gray-500 h-[50px] ${tailwind}`}>
+    <div className={`flex items-center p-3 bg-gray-500 h-[50px] ${className}`}>
       <div className="mr-2">{Logo}</div>
 
       {routes && (

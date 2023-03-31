@@ -1,24 +1,63 @@
 import React from "react";
 
 export interface InputProps {
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  onChange: any;
   value: string;
+  id?: string;
+  type?: string;
+  name?: string;
   placeholder?: string;
-  tailwind?: string;
+  className?: string;
+  disabled?: string;
+  max?: number;
+  min?: number;
+  maxlength?: number;
 }
 
-const Input = ({
-  setValue,
-  tailwind,
+const Input: React.FC<InputProps> = ({
+  onChange,
+  className,
+  max,
+  min,
+  maxlength,
+  type = "text",
+  name = "",
   value = "",
   placeholder = "",
-}: InputProps) => {
+}) => {
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChange = () => {
+    setChecked((checked) => !checked);
+    onChange(!checked);
+  };
+
+  if (type == "checkbox")
+    return (
+      <input
+        type={type}
+        name={name}
+        id={name}
+        checked={checked}
+        className={`w-fit ${className}`}
+        value={value}
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
+    );
+
   return (
     <input
-      className={`border p-1 ${tailwind}`}
+      type={type}
+      name={name}
+      id={name}
+      className={`border rounded p-1 ${className}`}
       value={value}
       placeholder={placeholder}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
+      max={max}
+      min={min}
+      maxLength={maxlength}
     />
   );
 };

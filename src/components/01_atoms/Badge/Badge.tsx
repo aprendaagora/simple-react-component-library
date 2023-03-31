@@ -5,22 +5,22 @@ export interface BadgeProps {
   text: string;
   bgColor?: string;
   count?: number;
-  clickFunction?: any;
-  tailwind?: string;
+  onClick?: any;
+  className?: string;
 }
 
-const Badge = ({
+const Badge: React.FC<BadgeProps> = ({
   text,
-  tailwind,
+  className,
   count,
-  clickFunction,
+  onClick,
   bgColor = "black",
-}: BadgeProps) => {
+}) => {
   return (
     <span
       style={{ backgroundColor: bgColor }}
-      className={`rounded-full relative inline-block text-white px-2 cursor-pointer w-fit ${tailwind}`}
-      onClick={clickFunction}
+      className={`rounded-full relative inline-block text-white px-2 cursor-pointer w-fit ${className}`}
+      onClick={onClick}
     >
       <span>{text}</span>
       {count && (

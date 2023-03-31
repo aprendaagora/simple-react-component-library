@@ -5,17 +5,17 @@ export interface JumbotronProps {
   heading: string;
   description?: string;
   Content: React.ReactNode;
-  tailwind?: string;
+  className?: string;
 }
 
 const Jumbotron: React.FC<JumbotronProps> = ({
   heading,
   description,
   Content,
-  tailwind,
+  className,
 }) => {
   return (
-    <div className={`p-5 bg-slate-50 border rounded ${tailwind}`}>
+    <div className={`p-5 bg-slate-50 border rounded ${className}`}>
       <header>
         <Heading text={heading} />
         {description && <p className="text-lg text-gray-500">{description}</p>}

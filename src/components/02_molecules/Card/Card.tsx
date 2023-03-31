@@ -5,17 +5,17 @@ export interface CardProps {
   image?: string;
   heading: string;
   description?: string;
-  tailwind?: string;
+  className?: string;
 }
 
 const Card: React.FC<CardProps> = ({
   image,
   heading,
   description,
-  tailwind,
+  className,
 }) => {
   return (
-    <div className={`border rounded bg-white p-2 ${tailwind}`}>
+    <div className={`border rounded bg-white p-2 ${className}`}>
       {image && <img src={image} alt="" />}
       <Heading text={heading} />
       {description && <p>{description}</p>}

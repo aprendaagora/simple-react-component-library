@@ -7,15 +7,15 @@ export interface AlertProps {
   text: string;
   type?: "success" | "primary" | "danger" | "secondary" | "dark" | "light";
   closeButton?: boolean;
-  tailwind?: string;
+  className?: string;
 }
 
-const Alert = ({
+const Alert: React.FC<AlertProps> = ({
   text,
-  tailwind,
+  className,
   type = "primary",
   closeButton = false,
-}: AlertProps) => {
+}) => {
   const [hide, setHide] = useState(false);
   const hideAlert = () => {
     setHide(true);
@@ -68,7 +68,7 @@ const Alert = ({
 
   return (
     <div
-      className={`rounded border p-4 justify-between ${tailwind}`}
+      className={`rounded border p-4 justify-between ${className}`}
       style={{ display: hide ? "none" : "flex", ...styles[type] }}
     >
       <span>{text}</span>{" "}
