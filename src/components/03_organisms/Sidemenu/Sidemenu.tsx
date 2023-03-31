@@ -12,14 +12,19 @@ export interface SidemenuProps {
     }[];
     renderItem: (item: any) => React.ReactNode;
   }[];
+  className?: string;
 }
 
-const Sidemenu: React.FC<SidemenuProps> = ({ menuSections }) => {
+const Sidemenu: React.FC<SidemenuProps> = ({ menuSections, className }) => {
   return (
-    <div className="min-h-[calc(100vh-50px)] bg-slate-100 w-[300px] border-r-2 p-3">
+    <div
+      className={`min-h-[calc(100vh-50px)] bg-slate-100 w-[300px] border-r-2 p-3 ${className}`}
+    >
       {menuSections.map((section) => (
         <>
-          {section.heading && <Heading level={6} text={section.heading} />}
+          {section.heading && (
+            <Heading level={6} text={section.heading} className="mt-10" />
+          )}
           {section.routes && (
             <List
               items={section.routes}

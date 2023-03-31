@@ -29,3 +29,10 @@ Badge3.args = {
   count: 50,
   bgColor: "blue",
 };
+
+export const Badge4 = Template.bind({});
+Badge4.args = {
+  text: "Following",
+  count: 1,
+  bgColor: "blue",
+};

@@ -6,6 +6,7 @@ export interface ListProps {
   listStyle?: any;
   itemStyle?: any;
   renderItem: (item: any) => React.ReactNode;
+  className?: string;
 }
 
 const List: React.FC<ListProps> = ({
@@ -13,11 +14,12 @@ const List: React.FC<ListProps> = ({
   listStyle,
   itemStyle,
   renderItem,
+  className,
 }) => {
   return (
-    <ul style={listStyle}>
-      {items.map((item, i) => (
-        <li style={itemStyle} key={i}>
+    <ul style={listStyle} className={className}>
+      {items.map((item, idx) => (
+        <li style={itemStyle} key={idx}>
           {renderItem(item)}
         </li>
       ))}

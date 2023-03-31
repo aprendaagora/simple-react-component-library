@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import List from "../../02_molecules/List";
 
 export interface NavbarProps {
@@ -8,12 +7,18 @@ export interface NavbarProps {
     route: string;
     text: string;
   }[];
-  renderItem: (item: any) => React.ReactNode;
+  renderItem?: (item: any) => React.ReactNode;
+  className?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ Logo, routes, renderItem }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  Logo,
+  routes,
+  renderItem = (item) => <span>{item}</span>,
+  className,
+}) => {
   return (
-    <div className="flex items-center p-3 bg-gray-500 h-[50px]">
+    <div className={`flex items-center p-3 bg-gray-500 h-[50px] ${className}`}>
       <div className="mr-2">{Logo}</div>
 
       {routes && (

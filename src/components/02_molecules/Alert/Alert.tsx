@@ -7,9 +7,15 @@ export interface AlertProps {
   text: string;
   type?: "success" | "primary" | "danger" | "secondary" | "dark" | "light";
   closeButton?: boolean;
+  className?: string;
 }
 
-const Alert = ({ text, type = "primary", closeButton = false }: AlertProps) => {
+const Alert: React.FC<AlertProps> = ({
+  text,
+  className,
+  type = "primary",
+  closeButton = false,
+}) => {
   const [hide, setHide] = useState(false);
   const hideAlert = () => {
     setHide(true);
@@ -48,7 +54,7 @@ const Alert = ({ text, type = "primary", closeButton = false }: AlertProps) => {
   const lightStyle = {
     color: "#818182",
     backgroundColor: "#fefefe",
-    borderColor: "#fdfdfe",
+    borderColor: "lightsmoke",
   };
 
   const styles = {
@@ -62,7 +68,7 @@ const Alert = ({ text, type = "primary", closeButton = false }: AlertProps) => {
 
   return (
     <div
-      className="rounded border p-4 justify-between"
+      className={`rounded border p-4 justify-between ${className}`}
       style={{ display: hide ? "none" : "flex", ...styles[type] }}
     >
       <span>{text}</span>{" "}
